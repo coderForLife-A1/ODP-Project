@@ -46,6 +46,32 @@ For each task:
 3. The first matching node runs `processTask(task)`.
 4. If no node can process it, a warning is shown.
 
+## Routing Flowchart
+
+```mermaid
+flowchart TD
+	A[Start: New Task] --> B[LoadBalancer receives Task]
+	B --> C{Any nodes left in nodePool?}
+	C -- No --> Z[Routing Failed\nStatus remains Pending\nPrint warning]
+	C -- Yes --> D[Pick next node in order]
+
+	D --> E{Node is EdgeDevice?}
+	E -- Yes --> F{requiredCycles <= edge.availableCPU?}
+	F -- Yes --> G[EdgeDevice.processTask\nStatus: Processing -> Completed\nReturn true]
+	F -- No --> C
+
+	E -- No --> H{Node is CloudServer?}
+	H -- Yes --> I{maxTolerableLatency >= cloud.simulatedNetworkLatency?}
+	I -- Yes --> J[CloudServer.processTask\nStatus: Processing -> Completed\nReturn true]
+	I -- No --> C
+
+	H -- No --> C
+
+	G --> K[Main prints routed=true and final status Completed]
+	J --> K
+	Z --> L[Main prints routed=false and final status Pending]
+```
+
 ## Files
 
 - `main.cpp` - creates nodes, creates sample tasks, and runs the simulation.
