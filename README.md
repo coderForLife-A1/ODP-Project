@@ -14,6 +14,7 @@ This project models that behavior using OOP concepts:
 - abstraction
 - inheritance
 - polymorphism
+- encapsulation
 
 ## Main Components
 
