@@ -128,3 +128,20 @@ coverage.xml
 *.py,cover
 .hypothesis/
 .pytest_cache/
+
+# ========================
+# C / C++ Build Artifacts
+# ========================
+*.o
+*.obj
+*.so
+*.dll
+*.dylib
+*.a
+*.lib
+*.out
+*.exe
+
+# Project-specific build output
+edge_sim
+edge_sim.exe
