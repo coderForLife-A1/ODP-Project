@@ -1,5 +1,4 @@
 #include "CloudServer.h"
-
 #include <iostream>
 
 CloudServer::CloudServer()

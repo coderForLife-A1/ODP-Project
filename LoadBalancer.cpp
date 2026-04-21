@@ -1,5 +1,4 @@
 #include "LoadBalancer.h"
-
 #include <iostream>
 
 void LoadBalancer::addNode(const std::shared_ptr<ComputeNode> &node)

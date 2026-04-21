@@ -1,5 +1,4 @@
 #include "EdgeDevice.h"
-
 #include <iostream>
 
 EdgeDevice::EdgeDevice()
